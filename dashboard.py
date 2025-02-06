@@ -26,12 +26,15 @@ st.markdown("""
             border-radius: 8px;
             padding: 8px;
         }
-        .stSelectbox * {
+        .stSelectbox label {
             color: white !important;
+        }
+        .stSelectbox select {
+            color: black !important;
         }
         .stSelectbox div[role="listbox"] {
             background-color: #1E1E1E !important;
-            color: white !important;
+            color: black !important;
         }
         .stHeader, .stTitle {
             color: white !important;
