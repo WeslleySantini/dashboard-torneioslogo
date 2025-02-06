@@ -24,12 +24,15 @@ df = load_data()
 st.header("Adicionar Novo Torneio")
 dias_da_semana = ["Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado", "Domingo"]
 dia = st.selectbox("Dia da Semana", dias_da_semana)
-horario = st.time_input("Horário")
+
+horarios_disponiveis = ["11:00", "16:00", "21:00"]
+horario = st.selectbox("Horário", horarios_disponiveis)
+
 valor = st.number_input("Valor do Torneio (R$)", min_value=0.0, format="%.2f")
 entrada = st.number_input("Valor da Entrada", min_value=0, step=1)
 
 if st.button("Adicionar Torneio"):
-    novo_torneio = pd.DataFrame([[dia, horario.strftime('%H:%M'), valor, entrada]], columns=df.columns)
+    novo_torneio = pd.DataFrame([[dia, horario, valor, entrada]], columns=df.columns)
     df = pd.concat([df, novo_torneio], ignore_index=True)
     save_data(df)
     st.success("Torneio adicionado com sucesso!")
