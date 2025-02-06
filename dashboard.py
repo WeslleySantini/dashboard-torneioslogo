@@ -17,7 +17,7 @@ st.markdown("""
             color: white !important;
         }
         p, div, span, button {
-            color: white !important;
+            color: black !important;
         }
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
@@ -29,8 +29,11 @@ st.markdown("""
             border-radius: 8px;
             padding: 8px;
         }
-        .stSelectbox * {
+        .stSelectbox label {
             color: white !important;
+        }
+        .stSelectbox * {
+            color: black !important;
         }
         .stSelectbox div[role="listbox"] {
             background-color: #1E1E1E !important;
