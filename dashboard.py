@@ -32,7 +32,7 @@ st.markdown("""
         }
         .stSelectbox div[role="listbox"] {
             background-color: #1E1E1E !important;
-            color: white !important;
+            color: black !important;
         }
         .stHeader, .stTitle {
             color: white !important;
