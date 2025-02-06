@@ -28,6 +28,10 @@ st.markdown("""
         .stSelectbox * {
             color: black !important;
         }
+        .stSelectbox div[role="listbox"] {
+            background-color: #1E1E1E !important;
+            color: black !important;
+        }
         .stHeader {
             color: #FFD700 !important;
         }
