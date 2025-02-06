@@ -17,14 +17,14 @@ st.markdown("""
             color: white !important;
         }
         p, div, span {
-            color: black !important;
+            color: white !important;
         }
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
             color: white !important;
         }
         .stSelectbox, .stTextInput, .stNumberInput, .stDataFrame {
-            background-color: #121212 !important;
+            background-color: #ffffff !important;
             color: black !important;
             border-radius: 8px;
             padding: 8px;
@@ -36,7 +36,7 @@ st.markdown("""
             color: black !important;
         }
         .stSelectbox div[role="listbox"] {
-            background-color: #1E1E1E !important;
+            background-color: #ffffff !important;
             color: black !important;
         }
         .stHeader, .stTitle {
