@@ -48,9 +48,8 @@ st.markdown("""
             color: white !important;
         }
 
-        input::placeholder {
-  font-weight: bold;
-  color: #00000;
+  .stSelectbox * {
+    color: #00000 !important;
 }
     </style>
 """, unsafe_allow_html=True)
