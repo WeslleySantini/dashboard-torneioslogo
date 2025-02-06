@@ -13,7 +13,7 @@ st.markdown("""
             background-color: #121212;
             color: white;
         }
-        h1, h2, h3, h4, h5, h6, p, label, div, span, select, button {
+        h1, h2, h3, h4, h5, h6, p, label, div, span, button {
             color: white !important;
         }
         .stDataFrame, .dataframe {
@@ -22,7 +22,7 @@ st.markdown("""
         }
         .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
             background-color: #1E1E1E !important;
-            color: white !important;
+            color: black !important;
             border-radius: 5px;
         }
         .stHeader {
