@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Aplicando estilo para um fundo escuro profissional
+# Aplicando estilo responsivo para versão mobile e desktop
 st.markdown("""
     <style>
         body {
@@ -47,10 +47,11 @@ st.markdown("""
             background-color: #28a745 !important;
             color: white !important;
         }
-
-  .stSelectbox * {
-    color: #000 !important;
-}
+        @media (max-width: 768px) {
+            .stColumns {
+                flex-direction: column !important;
+            }
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -89,10 +90,10 @@ if st.button("Adicionar Torneio"):
     save_data(df)
     st.success("✅ Torneio adicionado com sucesso!")
 
-# Exibir lista de torneios separados por dia da semana em colunas
+# Exibir lista de torneios separados por dia da semana em colunas responsivas
 st.header("Torneios Cadastrados")
 if not df.empty:
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2) if st.get_option("browser.gatherUsageStats") else (st.container(), st.container())
     for i, dia in enumerate(dias_da_semana):
         torneios_do_dia = df[df["Dia"] == dia]
         if not torneios_do_dia.empty:
