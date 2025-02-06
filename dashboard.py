@@ -14,7 +14,7 @@ st.markdown("""
             color: white;
         }
         h1, h2, h3, h4, h5, h6, p, div, span, button {
-            color: white !important;
+            color: black !important;
         }
         label:contains("Dia da Semana"),
         label:contains("Horário"),
