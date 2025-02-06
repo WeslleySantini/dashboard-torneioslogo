@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Aplicando estilo para um fundo escuro com letras brancas e elementos destacados
+# Aplicando estilo para um fundo escuro profissional com detalhes dourados
 st.markdown("""
     <style>
         body {
@@ -21,19 +21,31 @@ st.markdown("""
             color: white !important;
         }
         .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
-            background-color: #1E1E1E !important;
+            background-color: #333333 !important;
             color: black !important;
-            border-radius: 5px;
+            border-radius: 8px;
+            padding: 8px;
         }
         .stSelectbox * {
             color: black !important;
         }
         .stSelectbox div[role="listbox"] {
-            background-color: #1E1E1E !important;
+            background-color: #333333 !important;
             color: black !important;
         }
-        .stHeader {
+        .stHeader, .stTitle {
             color: #FFD700 !important;
+        }
+        .stButton > button {
+            background-color: #FFD700 !important;
+            color: black !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+            padding: 10px 15px !important;
+        }
+        .stSuccess {
+            background-color: #28a745 !important;
+            color: white !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -49,10 +61,10 @@ def save_data(df):
     df.to_csv("torneios.csv", index=False)
 
 # Exibir logo centralizada
-st.image("logo.png", width=200)
+st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("Dashboard de Torneios - Liga Brasil")
+st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
 
 df = load_data()
 
@@ -71,7 +83,7 @@ if st.button("Adicionar Torneio"):
     novo_torneio = pd.DataFrame([[dia, horario, valor, entrada]], columns=df.columns)
     df = pd.concat([df, novo_torneio], ignore_index=True)
     save_data(df)
-    st.success("Torneio adicionado com sucesso!")
+    st.success("✅ Torneio adicionado com sucesso!")
 
 # Exibir lista de torneios separados por dia da semana em colunas
 st.header("Torneios Cadastrados")
@@ -96,6 +108,6 @@ if not df.empty:
     if st.button("Excluir Torneio"):
         df = df[df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R${row['Valor']} - Entrada {row['Entrada']}" != torneio_selecionado, axis=1)]
         save_data(df)
-        st.success("Torneio excluído com sucesso!")
+        st.success("✅ Torneio excluído com sucesso!")
 
-st.write("Desenvolvido para gestão dos torneios diários da Liga Brasil.")
+st.write("⚡ Desenvolvido para a gestão dos torneios da Liga Brasil ⚡")
