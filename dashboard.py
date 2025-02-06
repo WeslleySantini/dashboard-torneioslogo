@@ -2,23 +2,31 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Aplicando estilo para fundo preto e texto branco
+# Aplicando estilo para um fundo escuro com letras brancas e elementos destacados
 st.markdown("""
     <style>
         body {
-            background-color: black;
+            background-color: #121212;
             color: white;
         }
         .stApp {
-            background-color: black;
+            background-color: #121212;
             color: white;
         }
         h1, h2, h3, h4, h5, h6, p, label, div, span, select, button {
             color: white !important;
         }
         .stDataFrame, .dataframe {
-            background-color: black !important;
+            background-color: #1E1E1E !important;
             color: white !important;
+        }
+        .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
+            background-color: #1E1E1E !important;
+            color: white !important;
+            border-radius: 5px;
+        }
+        .stHeader {
+            color: #FFD700 !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -67,11 +75,11 @@ if not df.empty:
         if not torneios_do_dia.empty:
             if i % 2 == 0:
                 with col1:
-                    st.subheader(dia)
+                    st.subheader(f"🗓️ {dia}")
                     st.dataframe(torneios_do_dia)
             else:
                 with col2:
-                    st.subheader(dia)
+                    st.subheader(f"🗓️ {dia}")
                     st.dataframe(torneios_do_dia)
 
 # Opção para excluir torneios
