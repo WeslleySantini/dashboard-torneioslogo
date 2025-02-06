@@ -13,7 +13,10 @@ st.markdown("""
             background-color: #121212;
             color: white;
         }
-        h1, h2, h3, h4, h5, h6, p, div, span, button {
+        h1, h2, h3, h4, h5, h6 {
+            color: white !important;
+        }
+        p, div, span, button {
             color: black !important;
         }
         label:contains("Dia da Semana"),
