@@ -16,28 +16,22 @@ st.markdown("""
         h1, h2, h3, h4, h5, h6, label {
             color: white !important;
         }
-        p, div, span {
-            color: white !important;
-        }
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
             color: white !important;
         }
         .stSelectbox, .stTextInput, .stNumberInput, .stDataFrame {
-            background-color: #ffffff !important;
-            color: black !important;
+            background-color: #121212 !important;
+            color: white !important;
             border-radius: 8px;
             padding: 8px;
         }
-        .stSelectbox label {
+        .stSelectbox * {
             color: white !important;
         }
-        .stSelectbox * {
-            color: black !important;
-        }
         .stSelectbox div[role="listbox"] {
-            background-color: #ffffff !important;
-            color: black !important;
+            background-color: #1E1E1E !important;
+            color: white !important;
         }
         .stHeader, .stTitle {
             color: white !important;
