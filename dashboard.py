@@ -16,14 +16,14 @@ st.markdown("""
         h1, h2, h3, h4, h5, h6, label {
             color: white !important;
         }
-        p, div, span, button {
+        p, div, span {
             color: black !important;
         }
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
             color: white !important;
         }
-        .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
+        .stSelectbox, .stTextInput, .stNumberInput, .stDataFrame {
             background-color: #121212 !important;
             color: black !important;
             border-radius: 8px;
