@@ -19,6 +19,7 @@ st.markdown("""
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
             color: white !important;
+            text-align: center !important;
         }
         .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
             background-color: #121212 !important;
@@ -58,7 +59,10 @@ st.markdown("""
 # Função para carregar ou criar o arquivo de torneios
 def load_data():
     try:
-        return pd.read_csv("torneios.csv")
+        df = pd.read_csv("torneios.csv")
+        df["Valor"] = df["Valor"].apply(lambda x: f"$ {x:,.2f}")
+        df["Entrada"] = df["Entrada"].apply(lambda x: f"$ {x:,.2f}")
+        return df
     except FileNotFoundError:
         return pd.DataFrame(columns=["Dia", "Horário", "Valor", "Entrada"])
 
@@ -69,7 +73,7 @@ def save_data(df):
 st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("Dashboard de Torneios - Liga Brasil")
+st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
 
 df = load_data()
 
@@ -85,7 +89,7 @@ valor = st.number_input("Valor do Torneio (R$)", min_value=0.0, format="%.2f")
 entrada = st.number_input("Valor da Entrada", min_value=0, step=1)
 
 if st.button("Adicionar Torneio"):
-    novo_torneio = pd.DataFrame([[dia, horario, valor, entrada]], columns=df.columns)
+    novo_torneio = pd.DataFrame([[dia, horario, f"$ {valor:,.2f}", f"$ {entrada:,.2f}"]], columns=df.columns)
     df = pd.concat([df, novo_torneio], ignore_index=True)
     save_data(df)
     st.success("✅ Torneio adicionado com sucesso!")
@@ -97,6 +101,7 @@ if not df.empty:
     for i, dia in enumerate(dias_da_semana):
         torneios_do_dia = df[df["Dia"] == dia]
         if not torneios_do_dia.empty:
+            torneios_do_dia = torneios_do_dia.style.set_properties(**{"text-align": "center"})
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
@@ -109,10 +114,10 @@ if not df.empty:
 # Opção para excluir torneios
 st.header("Excluir Torneio")
 if not df.empty:
-    torneio_selecionado = st.selectbox("Selecione um torneio para excluir", df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R${row['Valor']} - Entrada {row['Entrada']}", axis=1))
+    torneio_selecionado = st.selectbox("Selecione um torneio para excluir", df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - {row['Valor']} - Entrada {row['Entrada']}", axis=1))
     if st.button("Excluir Torneio"):
-        df = df[df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R${row['Valor']} - Entrada {row['Entrada']}" != torneio_selecionado, axis=1)]
+        df = df[df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - {row['Valor']} - Entrada {row['Entrada']}" != torneio_selecionado, axis=1)]
         save_data(df)
         st.success("✅ Torneio excluído com sucesso!")
 
-st.write("Desenvolvido para a gestão dos torneios da Liga Brasil")
+st.write("⚡ Desenvolvido para a gestão dos torneios da Liga Brasil ⚡")
