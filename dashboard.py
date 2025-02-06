@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Aplicando estilo para um fundo escuro profissional com detalhes dourados
+# Aplicando estilo para um fundo escuro profissional
 st.markdown("""
     <style>
         body {
@@ -25,7 +25,6 @@ st.markdown("""
             color: white !important;
             border-radius: 8px;
             padding: 8px;
-            border: 1px solid #FFD700;
         }
         .stSelectbox * {
             color: white !important;
@@ -35,11 +34,11 @@ st.markdown("""
             color: white !important;
         }
         .stHeader, .stTitle {
-            color: #FFD700 !important;
+            color: white !important;
         }
         .stButton > button {
-            background-color: #FFD700 !important;
-            color: black !important;
+            background-color: #1E1E1E !important;
+            color: white !important;
             font-weight: bold !important;
             border-radius: 8px !important;
             padding: 10px 15px !important;
