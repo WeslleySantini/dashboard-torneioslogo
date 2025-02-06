@@ -17,7 +17,7 @@ st.markdown("""
             color: white !important;
         }
         p, div, span, button {
-            color: black !important;
+            color: white !important;
         }
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
