@@ -37,9 +37,14 @@ if st.button("Adicionar Torneio"):
     save_data(df)
     st.success("Torneio adicionado com sucesso!")
 
-# Exibir lista de torneios
+# Exibir lista de torneios separados por dia da semana
 st.header("Torneios Cadastrados")
-st.dataframe(df)
+if not df.empty:
+    for dia in dias_da_semana:
+        torneios_do_dia = df[df["Dia"] == dia]
+        if not torneios_do_dia.empty:
+            st.subheader(dia)
+            st.dataframe(torneios_do_dia)
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
