@@ -48,6 +48,10 @@ st.markdown("""
             color: white !important;
         }
 
+        input::placeholder {
+  font-weight: bold;
+  color: #00000;
+}
     </style>
 """, unsafe_allow_html=True)
 
