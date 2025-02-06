@@ -49,7 +49,7 @@ st.markdown("""
         }
 
   .stSelectbox * {
-    color: #00000 !important;
+    color: #000 !important;
 }
     </style>
 """, unsafe_allow_html=True)
