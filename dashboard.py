@@ -22,16 +22,16 @@ st.markdown("""
         }
         .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
             background-color: #121212 !important;
-            color: white !important;
+            color: black !important;
             border-radius: 8px;
             padding: 8px;
         }
         .stSelectbox * {
-            color: white !important;
+            color: black !important;
         }
         .stSelectbox div[role="listbox"] {
             background-color: #1E1E1E !important;
-            color: white !important;
+            color: black !important;
         }
         .stHeader, .stTitle {
             color: white !important;
