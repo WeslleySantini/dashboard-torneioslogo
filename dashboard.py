@@ -25,6 +25,9 @@ st.markdown("""
             color: black !important;
             border-radius: 5px;
         }
+        .stSelectbox * {
+            color: black !important;
+        }
         .stHeader {
             color: #FFD700 !important;
         }
