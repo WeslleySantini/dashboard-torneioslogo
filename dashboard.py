@@ -21,17 +21,18 @@ st.markdown("""
             color: white !important;
         }
         .stSelectbox, .stButton, .stTextInput, .stNumberInput, .stDataFrame {
-            background-color: #333333 !important;
-            color: black !important;
+            background-color: #121212 !important;
+            color: white !important;
             border-radius: 8px;
             padding: 8px;
+            border: 1px solid #FFD700;
         }
         .stSelectbox * {
-            color: black !important;
+            color: white !important;
         }
         .stSelectbox div[role="listbox"] {
-            background-color: #333333 !important;
-            color: black !important;
+            background-color: #1E1E1E !important;
+            color: white !important;
         }
         .stHeader, .stTitle {
             color: #FFD700 !important;
@@ -64,7 +65,7 @@ def save_data(df):
 st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("Dashboard de Torneios - Liga Brasil")
+st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
 
 df = load_data()
 
@@ -110,4 +111,4 @@ if not df.empty:
         save_data(df)
         st.success("✅ Torneio excluído com sucesso!")
 
-st.write("Desenvolvido para a gestão dos torneios da Liga Brasil")
+st.write("⚡ Desenvolvido para a gestão dos torneios da Liga Brasil ⚡")
