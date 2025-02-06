@@ -2,6 +2,27 @@ import streamlit as st
 import pandas as pd
 import datetime
 
+# Aplicando estilo para fundo preto e texto branco
+st.markdown("""
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        .stApp {
+            background-color: black;
+            color: white;
+        }
+        h1, h2, h3, h4, h5, h6, p, label, div, span, select, button {
+            color: white !important;
+        }
+        .stDataFrame, .dataframe {
+            background-color: black !important;
+            color: white !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Função para carregar ou criar o arquivo de torneios
 def load_data():
     try:
