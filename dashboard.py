@@ -13,16 +13,11 @@ st.markdown("""
             background-color: #121212;
             color: white;
         }
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4, h5, h6, label {
             color: white !important;
         }
         p, div, span, button {
             color: black !important;
-        }
-        label:contains("Dia da Semana"),
-        label:contains("Horário"),
-        label:contains("Selecione um torneio para excluir") {
-            color: white !important;
         }
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
