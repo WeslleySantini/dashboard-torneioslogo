@@ -37,14 +37,21 @@ if st.button("Adicionar Torneio"):
     save_data(df)
     st.success("Torneio adicionado com sucesso!")
 
-# Exibir lista de torneios separados por dia da semana
+# Exibir lista de torneios separados por dia da semana em colunas
 st.header("Torneios Cadastrados")
 if not df.empty:
-    for dia in dias_da_semana:
+    col1, col2 = st.columns(2)
+    for i, dia in enumerate(dias_da_semana):
         torneios_do_dia = df[df["Dia"] == dia]
         if not torneios_do_dia.empty:
-            st.subheader(dia)
-            st.dataframe(torneios_do_dia)
+            if i % 2 == 0:
+                with col1:
+                    st.subheader(dia)
+                    st.dataframe(torneios_do_dia)
+            else:
+                with col2:
+                    st.subheader(dia)
+                    st.dataframe(torneios_do_dia)
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
