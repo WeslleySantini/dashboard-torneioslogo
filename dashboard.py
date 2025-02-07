@@ -72,7 +72,7 @@ def save_data(df):
 st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
+st.title("Dashboard de Torneios - Liga Brasil")
 
 df = load_data()
 
@@ -102,7 +102,7 @@ if not df.empty:
         torneios_do_dia = df_display[df_display["Dia"] == dia]
         if not torneios_do_dia.empty:
             torneios_do_dia = torneios_do_dia.drop(columns=["Dia"])  # Remover a coluna Dia na exibição
-            torneios_do_dia = torneios_do_dia.rename(columns={"Horário": "⏰ Horário", "Valor": "💰 Valor", "Entrada": "🎟️ Entrada"})
+            torneios_do_dia = torneios_do_dia.rename(columns={"Horário": "Horário", "Valor": "Valor", "Entrada": "Entrada"})
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
@@ -121,4 +121,4 @@ if not df.empty:
         save_data(df)
         st.success("✅ Torneio excluído com sucesso!")
 
-st.write("⚡ Desenvolvido para a gestão dos torneios da Liga Brasil ⚡")
+st.write("Desenvolvido para a gestão dos torneios da Liga Brasil")
