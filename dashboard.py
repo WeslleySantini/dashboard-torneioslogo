@@ -133,11 +133,11 @@ if not df.empty:
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
-                    st.write(torneios_do_dia.style.hide_index().set_properties(**{'text-align': 'center'}))
+                    st.dataframe(torneios_do_dia, hide_index=True)
             else:
                 with col2:
                     st.subheader(f"🗓️ {dia}")
-                    st.write(torneios_do_dia.style.hide_index().set_properties(**{'text-align': 'center'}))
+                    st.dataframe(torneios_do_dia, hide_index=True)
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
