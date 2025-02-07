@@ -141,11 +141,17 @@ if not df.empty:
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
-if not df.empty:
-    torneio_selecionado = st.selectbox("Selecione um torneio para excluir", df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R$ {row['Valor']} - Entrada R$ {row['Entrada']}", axis=1))
+if not df.empty():
+    opcoes = ["Excluir Todos"] + df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R$ {row['Valor']} - Entrada R$ {row['Entrada']}", axis=1).tolist()
+    torneio_selecionado = st.selectbox("Selecione um torneio para excluir", opcoes)
+    
     if st.button("Excluir Torneio"):
-        df = df[df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R$ {row['Valor']} - Entrada R$ {row['Entrada']}" != torneio_selecionado, axis=1)]
+        if torneio_selecionado == "Excluir Todos":
+            df = pd.DataFrame(columns=["Dia", "Horário", "Valor", "Entrada"])
+            st.success("✅ Todos os torneios foram excluídos!")
+        else:
+            df = df[df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R$ {row['Valor']} - Entrada R$ {row['Entrada']}" != torneio_selecionado, axis=1)]
+            st.success("✅ Torneio excluído com sucesso!")
         save_data(df)
-        st.success("✅ Torneio excluído com sucesso!")
 
 st.write("⚡ Desenvolvido para a gestão dos torneios da Liga Brasil ⚡")
