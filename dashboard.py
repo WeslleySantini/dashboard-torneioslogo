@@ -99,7 +99,7 @@ def save_data(df):
 st.image("logo.png", width=125)
 
 # Carregar os dados
-st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
+st.title("Dashboard de Torneios - Liga Brasil")
 
 df = load_data()
 
