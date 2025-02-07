@@ -62,7 +62,8 @@ st.markdown("""
         }
         .stTable th, .stTable td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 12px;
+            color: white !important;
         }
         .stTable th {
             background-color: #003F74;
@@ -70,6 +71,9 @@ st.markdown("""
             font-weight: bold;
         }
         .stTable tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+        .stTable tr:nth-child(odd) {
             background-color: #1E1E1E;
         }
         @media (max-width: 768px) {
@@ -127,15 +131,14 @@ if not df.empty:
         torneios_do_dia = df_display[df_display["Dia"] == dia]
         if not torneios_do_dia.empty:
             torneios_do_dia = torneios_do_dia.drop(columns=["Dia"])  # Remover a coluna Dia na exibição
-            torneios_do_dia = torneios_do_dia.rename(columns={"Horário": "Horário", "Valor": "Valor", "Entrada": "Entrada"})
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
-                    st.table(torneios_do_dia)
+                    st.write(torneios_do_dia.style.set_properties(**{'text-align': 'center'}))
             else:
                 with col2:
                     st.subheader(f"🗓️ {dia}")
-                    st.table(torneios_do_dia)
+                    st.write(torneios_do_dia.style.set_properties(**{'text-align': 'center'}))
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
