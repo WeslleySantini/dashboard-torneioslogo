@@ -128,7 +128,7 @@ if not df.empty:
     
     col1, col2 = st.columns(2) if st.get_option("browser.gatherUsageStats") else (st.container(), st.container())
     for i, dia in enumerate(dias_da_semana):
-        torneios_do_dia = df_display[df["Dia"] == dia]
+        torneios_do_dia = df_display[df["Dia"] == dia].reset_index(drop=True)  # Remover índice
         if not torneios_do_dia.empty:
             if i % 2 == 0:
                 with col1:
