@@ -99,7 +99,7 @@ def save_data(df):
 st.image("logo.png", width=125)
 
 # Carregar os dados
-st.title("Dashboard de Torneios - Liga Brasil")
+st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
 
 df = load_data()
 
@@ -134,7 +134,7 @@ if not df.empty:
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
-                    st.dataframe(torneios_do_dia, hide_index=True)
+                    st.table(torneios_do_dia.style.set_properties(**{'border': '2px solid white', 'font-weight': 'bold', 'color': 'black'}))
             else:
                 with col2:
                     st.subheader(f"🗓️ {dia}")
