@@ -19,6 +19,9 @@ st.markdown("""
         .stDataFrame, .dataframe {
             background-color: #1E1E1E !important;
             color: white !important;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
         }
         .stSelectbox, .stTextInput, .stNumberInput, .stDataFrame {
             background-color: #121212 !important;
@@ -50,6 +53,25 @@ st.markdown("""
             background-color: #28a745 !important;
             color: white !important;
         }
+        .stTable {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .stTable th, .stTable td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .stTable th {
+            background-color: #003F74;
+            color: white;
+            font-weight: bold;
+        }
+        .stTable tr:nth-child(even) {
+            background-color: #1E1E1E;
+        }
         @media (max-width: 768px) {
             .stColumns {
                 flex-direction: column !important;
@@ -72,7 +94,7 @@ def save_data(df):
 st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("Dashboard de Torneios - Liga Brasil")
+st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
 
 df = load_data()
 
@@ -109,11 +131,11 @@ if not df.empty:
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
-                    st.dataframe(torneios_do_dia, hide_index=True)
+                    st.table(torneios_do_dia)
             else:
                 with col2:
                     st.subheader(f"🗓️ {dia}")
-                    st.dataframe(torneios_do_dia, hide_index=True)
+                    st.table(torneios_do_dia)
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
