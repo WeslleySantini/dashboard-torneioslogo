@@ -61,14 +61,14 @@ st.markdown("""
             text-align: center;
         }
         .stTable th, .stTable td {
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             padding: 12px;
             color: white !important;
         }
         .stTable th {
             background-color: #003F74;
-            color: white;
-            font-weight: bold;
+            color: black !important;
+            font-weight: bold !important;
         }
         .stTable tr:nth-child(even) {
             background-color: #2a2a2a;
@@ -97,7 +97,6 @@ def save_data(df):
 
 # Exibir logo centralizada
 st.image("logo.png", width=125)
-
 
 # Carregar os dados
 st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
