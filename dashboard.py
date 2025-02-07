@@ -72,7 +72,7 @@ def save_data(df):
 st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
+st.title("Dashboard de Torneios - Liga Brasil")
 
 df = load_data()
 
@@ -88,7 +88,7 @@ valor = st.number_input("Valor do Torneio (R$)", min_value=0.0, format="%.2f")
 entrada = st.number_input("Valor da Entrada", min_value=0, step=1)
 
 if st.button("Adicionar Torneio"):
-    novo_torneio = pd.DataFrame([[dia, horario, f"R$ {valor:.2f}", f"R$ {entrada:.2f}"]], columns=df.columns)
+    novo_torneio = pd.DataFrame([[dia, horario, valor, entrada]], columns=df.columns)
     df = pd.concat([df, novo_torneio], ignore_index=True)
     save_data(df)
     st.success("✅ Torneio adicionado com sucesso!")
@@ -96,13 +96,14 @@ if st.button("Adicionar Torneio"):
 # Exibir lista de torneios separados por dia da semana em colunas responsivas
 st.header("Torneios Cadastrados")
 if not df.empty:
-    df_display = df[['Dia', 'Horário', 'Valor', 'Entrada']]
+    df_display = df[['Dia', 'Horário', 'Valor', 'Entrada']].copy()
+    df_display["Valor"] = df_display["Valor"].apply(lambda x: f"R$ {float(x):,.2f}" if isinstance(x, (int, float)) else x)
+    df_display["Entrada"] = df_display["Entrada"].apply(lambda x: f"R$ {float(x):,.2f}" if isinstance(x, (int, float)) else x)
+    
     col1, col2 = st.columns(2) if st.get_option("browser.gatherUsageStats") else (st.container(), st.container())
     for i, dia in enumerate(dias_da_semana):
-        torneios_do_dia = df_display[df_display["Dia"] == dia].copy()
+        torneios_do_dia = df_display[df_display["Dia"] == dia]
         if not torneios_do_dia.empty:
-            torneios_do_dia["Valor"] = torneios_do_dia["Valor"].apply(lambda x: f"R$ {float(x.replace('R$', '').strip()):,.2f}")
-            torneios_do_dia["Entrada"] = torneios_do_dia["Entrada"].apply(lambda x: f"R$ {float(x.replace('R$', '').strip()):,.2f}")
             torneios_do_dia = torneios_do_dia.drop(columns=["Dia"])  # Remover a coluna Dia na exibição
             torneios_do_dia = torneios_do_dia.rename(columns={"Horário": "Horário", "Valor": "Valor", "Entrada": "Entrada"})
             if i % 2 == 0:
