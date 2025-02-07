@@ -72,7 +72,7 @@ def save_data(df):
 st.image("logo.png", width=250)
 
 # Carregar os dados
-st.title("Dashboard de Torneios - Liga Brasil")
+st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
 
 df = load_data()
 
@@ -99,8 +99,10 @@ if not df.empty:
     df_display = df[['Dia', 'Horário', 'Valor', 'Entrada']]
     col1, col2 = st.columns(2) if st.get_option("browser.gatherUsageStats") else (st.container(), st.container())
     for i, dia in enumerate(dias_da_semana):
-        torneios_do_dia = df_display[df_display["Dia"] == dia]
+        torneios_do_dia = df_display[df_display["Dia"] == dia].copy()
         if not torneios_do_dia.empty:
+            torneios_do_dia["Valor"] = torneios_do_dia["Valor"].apply(lambda x: f"R$ {float(x.replace('R$', '').strip()):,.2f}")
+            torneios_do_dia["Entrada"] = torneios_do_dia["Entrada"].apply(lambda x: f"R$ {float(x.replace('R$', '').strip()):,.2f}")
             torneios_do_dia = torneios_do_dia.drop(columns=["Dia"])  # Remover a coluna Dia na exibição
             torneios_do_dia = torneios_do_dia.rename(columns={"Horário": "Horário", "Valor": "Valor", "Entrada": "Entrada"})
             if i % 2 == 0:
@@ -121,4 +123,4 @@ if not df.empty:
         save_data(df)
         st.success("✅ Torneio excluído com sucesso!")
 
-st.write("Desenvolvido para a gestão dos torneios da Liga Brasil")
+st.write("⚡ Desenvolvido para a gestão dos torneios da Liga Brasil ⚡")
