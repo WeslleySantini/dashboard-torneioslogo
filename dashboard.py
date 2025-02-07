@@ -122,15 +122,14 @@ if st.button("Adicionar Torneio"):
 # Exibir lista de torneios separados por dia da semana em colunas responsivas
 st.header("Torneios Cadastrados")
 if not df.empty:
-    df_display = df[['Dia', 'Horário', 'Valor', 'Entrada']].copy()
+    df_display = df[['Horário', 'Valor', 'Entrada']].copy()
     df_display["Valor"] = df_display["Valor"].apply(lambda x: f"R$ {float(x):,.2f}" if isinstance(x, (int, float)) else x)
     df_display["Entrada"] = df_display["Entrada"].apply(lambda x: f"R$ {float(x):,.2f}" if isinstance(x, (int, float)) else x)
     
     col1, col2 = st.columns(2) if st.get_option("browser.gatherUsageStats") else (st.container(), st.container())
     for i, dia in enumerate(dias_da_semana):
-        torneios_do_dia = df_display[df_display["Dia"] == dia]
+        torneios_do_dia = df_display[df["Dia"] == dia]
         if not torneios_do_dia.empty:
-            torneios_do_dia = torneios_do_dia.drop(columns=["Dia"])  # Remover a coluna Dia na exibição
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
