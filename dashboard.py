@@ -134,7 +134,7 @@ if not df.empty:
             if i % 2 == 0:
                 with col1:
                     st.subheader(f"🗓️ {dia}")
-                    st.table(torneios_do_dia.style.set_properties(**{'border': '2px solid white', 'font-weight': 'bold', 'color': 'black'}))
+                    st.dataframe(torneios_do_dia, hide_index=True)
             else:
                 with col2:
                     st.subheader(f"🗓️ {dia}")
