@@ -87,7 +87,8 @@ st.markdown("""
 # Função para carregar ou criar o arquivo de torneios
 def load_data():
     try:
-        return pd.read_csv("torneios.csv")
+        df = pd.read_csv("torneios.csv")
+        return df if not df.empty else pd.DataFrame(columns=["Dia", "Horário", "Valor", "Entrada"])
     except FileNotFoundError:
         return pd.DataFrame(columns=["Dia", "Horário", "Valor", "Entrada"])
 
@@ -128,7 +129,7 @@ if not df.empty:
     
     col1, col2 = st.columns(2) if st.get_option("browser.gatherUsageStats") else (st.container(), st.container())
     for i, dia in enumerate(dias_da_semana):
-        torneios_do_dia = df_display[df["Dia"] == dia].reset_index(drop=True)  # Remover índice
+        torneios_do_dia = df_display[df["Dia"] == dia].reset_index(drop=True)
         if not torneios_do_dia.empty:
             if i % 2 == 0:
                 with col1:
@@ -141,7 +142,7 @@ if not df.empty:
 
 # Opção para excluir torneios
 st.header("Excluir Torneio")
-if not df.empty():
+if not df.empty:
     opcoes = ["Excluir Todos"] + df.apply(lambda row: f"{row['Dia']} - {row['Horário']} - R$ {row['Valor']} - Entrada R$ {row['Entrada']}", axis=1).tolist()
     torneio_selecionado = st.selectbox("Selecione um torneio para excluir", opcoes)
     
