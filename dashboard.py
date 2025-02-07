@@ -96,10 +96,10 @@ def save_data(df):
     df.to_csv("torneios.csv", index=False)
 
 # Exibir logo centralizada
-st.image("logo.png", width=250)
+st.image("logo.png", width=125)
 
 # Carregar os dados
-st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
+st.title("Dashboard de Torneios - Liga Brasil")
 
 df = load_data()
 
