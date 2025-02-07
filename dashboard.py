@@ -97,10 +97,10 @@ def save_data(df):
 
 # Exibir logo centralizada
 st.image("logo.png", width=125)
-st.markdown('<div style="display: flex; justify-content: center;"><img src="logo.png" width="125"></div>', unsafe_allow_html=True)
+
 
 # Carregar os dados
-st.title("🏆 Dashboard de Torneios - Liga Brasil 🏆")
+st.title("Dashboard de Torneios - Liga Brasil")
 
 df = load_data()
 
